@@ -1,4 +1,0 @@
-java
-ko
-medtem
-objektno

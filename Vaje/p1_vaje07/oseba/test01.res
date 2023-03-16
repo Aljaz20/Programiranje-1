@@ -1,2 +1,0 @@
-Janez
-Ana

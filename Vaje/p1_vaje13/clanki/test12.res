@@ -1,1 +1,0 @@
-Zoran Novak
