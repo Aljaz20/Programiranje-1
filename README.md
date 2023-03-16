@@ -1,6 +1,6 @@
 # Programiranje-1
 
-Delo pri predmetu Programiranje 1 (JAVA) UNI, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani, 2022/23
+Delo pri predmetu Programiranje 1 (JAVA) UNI, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani, 2022/23:
 
 - Dodatne naloge s testinimi primeri,
 - pretekli izpiti s testinimi primeri,
