@@ -1,0 +1,1 @@
+public class Lev extends Macka{}

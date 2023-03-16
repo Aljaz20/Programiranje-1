@@ -1,0 +1,151 @@
+
+public class Test03 {
+
+    public static void main(String[] args) {
+        Tretja.Vodja v000 = new Tretja.Vodja("v000", 4248, null);
+        Tretja.Vodja v001 = new Tretja.Vodja("v001", 7254, v000);
+        Tretja.Vodja v002 = new Tretja.Vodja("v002", 7017, v000);
+        Tretja.Vodja v003 = new Tretja.Vodja("v003", 5487, v000);
+        Tretja.Vodja v004 = new Tretja.Vodja("v004", 5549, v000);
+        Tretja.Vodja v005 = new Tretja.Vodja("v005", 5384, v003);
+        Tretja.Vodja v006 = new Tretja.Vodja("v006", 7498, v002);
+        Tretja.Vodja v007 = new Tretja.Vodja("v007", 6948, v005);
+        Tretja.Vodja v008 = new Tretja.Vodja("v008", 1653, v000);
+        Tretja.Vodja v009 = new Tretja.Vodja("v009", 5741, v000);
+        Tretja.Vodja v010 = new Tretja.Vodja("v010", 1143, v006);
+        Tretja.Vodja v011 = new Tretja.Vodja("v011", 8410, v000);
+        Tretja.Vodja v012 = new Tretja.Vodja("v012", 7022, v005);
+        Tretja.Vodja v013 = new Tretja.Vodja("v013", 2864, null);
+        Tretja.Vodja v014 = new Tretja.Vodja("v014", 7193, v008);
+        Tretja.Vodja v015 = new Tretja.Vodja("v015", 5614, v005);
+        Tretja.Vodja v016 = new Tretja.Vodja("v016", 9801, v008);
+        Tretja.Vodja v017 = new Tretja.Vodja("v017", 8770, v004);
+        Tretja.Vodja v018 = new Tretja.Vodja("v018", 4835, v000);
+        Tretja.Vodja v019 = new Tretja.Vodja("v019", 5442, v004);
+        Tretja.Vodja v020 = new Tretja.Vodja("v020", 7069, v005);
+        Tretja.Vodja v021 = new Tretja.Vodja("v021", 2369, v003);
+        Tretja.Vodja v022 = new Tretja.Vodja("v022", 1477, null);
+        Tretja.Vodja v023 = new Tretja.Vodja("v023", 4304, v015);
+        Tretja.Vodja v024 = new Tretja.Vodja("v024", 4540, v009);
+        Tretja.Vodja v025 = new Tretja.Vodja("v025", 8800, v013);
+        Tretja.Vodja v026 = new Tretja.Vodja("v026", 3002, v025);
+        Tretja.Vodja v027 = new Tretja.Vodja("v027", 8671, v007);
+        Tretja.Vodja v028 = new Tretja.Vodja("v028", 1399, null);
+        Tretja.Vodja v029 = new Tretja.Vodja("v029", 6449, v021);
+        Tretja.Vodja v030 = new Tretja.Vodja("v030", 7194, v001);
+        Tretja.Vodja v031 = new Tretja.Vodja("v031", 7593, v017);
+        Tretja.Vodja v032 = new Tretja.Vodja("v032", 4136, v019);
+        Tretja.Vodja v033 = new Tretja.Vodja("v033", 8392, v000);
+        Tretja.Vodja v034 = new Tretja.Vodja("v034", 9410, v025);
+
+        Tretja.Delavec d000 = new Tretja.Delavec("d000", 6744, null);
+        Tretja.Delavec d001 = new Tretja.Delavec("d001", 6889, v018);
+        Tretja.Delavec d002 = new Tretja.Delavec("d002", 9460, v031);
+        Tretja.Delavec d003 = new Tretja.Delavec("d003", 5653, v025);
+        Tretja.Delavec d004 = new Tretja.Delavec("d004", 9088, null);
+        Tretja.Delavec d005 = new Tretja.Delavec("d005", 8102, null);
+        Tretja.Delavec d006 = new Tretja.Delavec("d006", 8485, v024);
+        Tretja.Delavec d007 = new Tretja.Delavec("d007", 5371, v016);
+        Tretja.Delavec d008 = new Tretja.Delavec("d008", 7256, v025);
+        Tretja.Delavec d009 = new Tretja.Delavec("d009", 3181, null);
+        Tretja.Delavec d010 = new Tretja.Delavec("d010", 7867, v017);
+        Tretja.Delavec d011 = new Tretja.Delavec("d011", 5974, null);
+        Tretja.Delavec d012 = new Tretja.Delavec("d012", 9525, v024);
+        Tretja.Delavec d013 = new Tretja.Delavec("d013", 7067, v004);
+        Tretja.Delavec d014 = new Tretja.Delavec("d014", 3098, v027);
+        Tretja.Delavec d015 = new Tretja.Delavec("d015", 2909, v033);
+        Tretja.Delavec d016 = new Tretja.Delavec("d016", 5470, v020);
+        Tretja.Delavec d017 = new Tretja.Delavec("d017", 2897, v032);
+        Tretja.Delavec d018 = new Tretja.Delavec("d018", 6312, v023);
+        Tretja.Delavec d019 = new Tretja.Delavec("d019", 5726, null);
+        Tretja.Delavec d020 = new Tretja.Delavec("d020", 2277, v010);
+        Tretja.Delavec d021 = new Tretja.Delavec("d021", 8614, v005);
+        Tretja.Delavec d022 = new Tretja.Delavec("d022", 9001, v033);
+        Tretja.Delavec d023 = new Tretja.Delavec("d023", 1982, v025);
+        Tretja.Delavec d024 = new Tretja.Delavec("d024", 3532, v017);
+        Tretja.Delavec d025 = new Tretja.Delavec("d025", 6246, v028);
+        Tretja.Delavec d026 = new Tretja.Delavec("d026", 2762, v002);
+        Tretja.Delavec d027 = new Tretja.Delavec("d027", 5179, null);
+        Tretja.Delavec d028 = new Tretja.Delavec("d028", 6366, v007);
+        Tretja.Delavec d029 = new Tretja.Delavec("d029", 9017, null);
+        Tretja.Delavec d030 = new Tretja.Delavec("d030", 3226, v008);
+        Tretja.Delavec d031 = new Tretja.Delavec("d031", 2800, null);
+        Tretja.Delavec d032 = new Tretja.Delavec("d032", 4658, v032);
+        Tretja.Delavec d033 = new Tretja.Delavec("d033", 5146, v005);
+        Tretja.Delavec d034 = new Tretja.Delavec("d034", 9130, null);
+        Tretja.Delavec d035 = new Tretja.Delavec("d035", 1958, v008);
+        Tretja.Delavec d036 = new Tretja.Delavec("d036", 8755, v004);
+        Tretja.Delavec d037 = new Tretja.Delavec("d037", 1758, v008);
+        Tretja.Delavec d038 = new Tretja.Delavec("d038", 3782, null);
+        Tretja.Delavec d039 = new Tretja.Delavec("d039", 6943, v019);
+        Tretja.Delavec d040 = new Tretja.Delavec("d040", 3014, v016);
+        Tretja.Delavec d041 = new Tretja.Delavec("d041", 6467, v005);
+        Tretja.Delavec d042 = new Tretja.Delavec("d042", 5616, v015);
+        Tretja.Delavec d043 = new Tretja.Delavec("d043", 1206, v013);
+        Tretja.Delavec d044 = new Tretja.Delavec("d044", 6856, v010);
+        Tretja.Delavec d045 = new Tretja.Delavec("d045", 3081, v013);
+        Tretja.Delavec d046 = new Tretja.Delavec("d046", 4837, v008);
+        Tretja.Delavec d047 = new Tretja.Delavec("d047", 2917, v018);
+        Tretja.Delavec d048 = new Tretja.Delavec("d048", 2170, v022);
+        Tretja.Delavec d049 = new Tretja.Delavec("d049", 3142, v004);
+        Tretja.Delavec d050 = new Tretja.Delavec("d050", 8670, v020);
+        Tretja.Delavec d051 = new Tretja.Delavec("d051", 3010, v018);
+        Tretja.Delavec d052 = new Tretja.Delavec("d052", 5821, v014);
+        Tretja.Delavec d053 = new Tretja.Delavec("d053", 5138, v010);
+        Tretja.Delavec d054 = new Tretja.Delavec("d054", 1748, v032);
+        Tretja.Delavec d055 = new Tretja.Delavec("d055", 9006, v015);
+        Tretja.Delavec d056 = new Tretja.Delavec("d056", 5010, null);
+        Tretja.Delavec d057 = new Tretja.Delavec("d057", 3465, null);
+        Tretja.Delavec d058 = new Tretja.Delavec("d058", 9817, v006);
+        Tretja.Delavec d059 = new Tretja.Delavec("d059", 1289, v007);
+        Tretja.Delavec d060 = new Tretja.Delavec("d060", 1816, v010);
+        Tretja.Delavec d061 = new Tretja.Delavec("d061", 8877, v010);
+        Tretja.Delavec d062 = new Tretja.Delavec("d062", 5973, v009);
+        Tretja.Delavec d063 = new Tretja.Delavec("d063", 9520, v028);
+        Tretja.Delavec d064 = new Tretja.Delavec("d064", 4771, v030);
+        Tretja.Delavec d065 = new Tretja.Delavec("d065", 3635, null);
+        Tretja.Delavec d066 = new Tretja.Delavec("d066", 5774, v020);
+        Tretja.Delavec d067 = new Tretja.Delavec("d067", 1014, v013);
+        Tretja.Delavec d068 = new Tretja.Delavec("d068", 9855, v032);
+        Tretja.Delavec d069 = new Tretja.Delavec("d069", 8613, v034);
+        Tretja.Delavec d070 = new Tretja.Delavec("d070", 5077, v007);
+        Tretja.Delavec d071 = new Tretja.Delavec("d071", 6364, v013);
+        Tretja.Delavec d072 = new Tretja.Delavec("d072", 4913, null);
+        Tretja.Delavec d073 = new Tretja.Delavec("d073", 8062, v026);
+        Tretja.Delavec d074 = new Tretja.Delavec("d074", 4233, v027);
+        Tretja.Delavec d075 = new Tretja.Delavec("d075", 6781, v027);
+        Tretja.Delavec d076 = new Tretja.Delavec("d076", 2199, null);
+        Tretja.Delavec d077 = new Tretja.Delavec("d077", 2699, v031);
+        Tretja.Delavec d078 = new Tretja.Delavec("d078", 9570, v004);
+        Tretja.Delavec d079 = new Tretja.Delavec("d079", 5537, null);
+        Tretja.Delavec d080 = new Tretja.Delavec("d080", 5481, v027);
+        Tretja.Delavec d081 = new Tretja.Delavec("d081", 5908, v032);
+        Tretja.Delavec d082 = new Tretja.Delavec("d082", 7942, v010);
+        Tretja.Delavec d083 = new Tretja.Delavec("d083", 5942, null);
+        Tretja.Delavec d084 = new Tretja.Delavec("d084", 9243, v003);
+        Tretja.Delavec d085 = new Tretja.Delavec("d085", 2838, null);
+        Tretja.Delavec d086 = new Tretja.Delavec("d086", 6525, v020);
+        Tretja.Delavec d087 = new Tretja.Delavec("d087", 6308, null);
+        Tretja.Delavec d088 = new Tretja.Delavec("d088", 7650, v014);
+        Tretja.Delavec d089 = new Tretja.Delavec("d089", 9458, v007);
+        Tretja.Delavec d090 = new Tretja.Delavec("d090", 8187, v022);
+        Tretja.Delavec d091 = new Tretja.Delavec("d091", 9355, null);
+        Tretja.Delavec d092 = new Tretja.Delavec("d092", 8183, v005);
+        Tretja.Delavec d093 = new Tretja.Delavec("d093", 6295, v027);
+        Tretja.Delavec d094 = new Tretja.Delavec("d094", 2730, null);
+        Tretja.Delavec d095 = new Tretja.Delavec("d095", 5970, v000);
+        Tretja.Delavec d096 = new Tretja.Delavec("d096", 3828, null);
+        Tretja.Delavec d097 = new Tretja.Delavec("d097", 9607, v006);
+        Tretja.Delavec d098 = new Tretja.Delavec("d098", 7967, v015);
+
+        Tretja.Zaposleni[] zaposleni = {
+            v000, v001, v002, v003, v004, v005, v006, v007, v008, v009, v010, v011, v012, v013, v014, v015, v016, v017, v018, v019, v020, v021, v022, v023, v024, v025, v026, v027, v028, v029, v030, v031, v032, v033, v034,
+            d000, d001, d002, d003, d004, d005, d006, d007, d008, d009, d010, d011, d012, d013, d014, d015, d016, d017, d018, d019, d020, d021, d022, d023, d024, d025, d026, d027, d028, d029, d030, d031, d032, d033, d034, d035, d036, d037, d038, d039, d040, d041, d042, d043, d044, d045, d046, d047, d048, d049, d050, d051, d052, d053, d054, d055, d056, d057, d058, d059, d060, d061, d062, d063, d064, d065, d066, d067, d068, d069, d070, d071, d072, d073, d074, d075, d076, d077, d078, d079, d080, d081, d082, d083, d084, d085, d086, d087, d088, d089, d090, d091, d092, d093, d094, d095, d096, d097, d098
+        };
+
+        System.out.println("[ placaNadrejenega ]");
+        for (Tretja.Zaposleni z: zaposleni) {
+            System.out.printf("%s -> %d%n", z, z.placaNadrejenega());
+        }
+    }
+}

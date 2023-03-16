@@ -1,0 +1,15 @@
+psi[0] -> true
+psi[1] -> true
+psi[2] -> false
+psi[3] -> true
+psi[4] -> true
+psi[5] -> false
+psi[6] -> false
+psi[7] -> true
+psi[8] -> false
+psi[9] -> true
+psi[10] -> false
+psi[11] -> true
+psi[12] -> true
+psi[13] -> true
+psi[14] -> true

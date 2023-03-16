@@ -1,0 +1,1 @@
+steviloAnomalij = 600

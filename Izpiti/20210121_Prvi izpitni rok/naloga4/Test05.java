@@ -1,0 +1,87 @@
+
+import java.util.*;
+
+public class Test05 {
+
+    public static void main(String[] args) {
+        List<Cetrta.Lik> liki = new ArrayList<>(List.of(
+            new Cetrta.Krog(new Cetrta.Barva(210, 174, 231), 62),
+            new Cetrta.Kvadrat(new Cetrta.Barva(135, 60, 58), 7),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(26, 186, 118), 17, 24),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(179, 53, 254), 62, 32),
+            new Cetrta.Krog(new Cetrta.Barva(4, 195, 142), 82),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(107, 41, 148), 100, 88),
+            new Cetrta.Kvadrat(new Cetrta.Barva(239, 246, 242), 69),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(161, 78, 176), 83, 41),
+            new Cetrta.Krog(new Cetrta.Barva(125, 53, 169), 47),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(196, 242, 78), 21, 43),
+            new Cetrta.Krog(new Cetrta.Barva(103, 203, 54), 13),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(137, 213, 162), 43, 20),
+            new Cetrta.Krog(new Cetrta.Barva(223, 99, 15), 76),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(153, 100, 18), 50, 8),
+            new Cetrta.Krog(new Cetrta.Barva(9, 116, 231), 95),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(4, 178, 44), 90, 7),
+            new Cetrta.Kvadrat(new Cetrta.Barva(143, 31, 16), 15),
+            new Cetrta.Krog(new Cetrta.Barva(108, 0, 68), 27),
+            new Cetrta.Kvadrat(new Cetrta.Barva(118, 98, 112), 47),
+            new Cetrta.Kvadrat(new Cetrta.Barva(242, 166, 187), 21),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(23, 221, 101), 56, 13),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(89, 81, 239), 41, 31),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(8, 8, 166), 20, 17),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(12, 101, 207), 38, 41),
+            new Cetrta.Kvadrat(new Cetrta.Barva(165, 0, 65), 45),
+            new Cetrta.Krog(new Cetrta.Barva(36, 225, 10), 34),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(29, 179, 101), 9, 81),
+            new Cetrta.Krog(new Cetrta.Barva(62, 229, 33), 39),
+            new Cetrta.Krog(new Cetrta.Barva(181, 153, 248), 28),
+            new Cetrta.Krog(new Cetrta.Barva(223, 229, 162), 46),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(207, 166, 167), 48, 28),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(133, 141, 223), 56, 74),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(107, 33, 239), 16, 19),
+            new Cetrta.Krog(new Cetrta.Barva(247, 72, 60), 72),
+            new Cetrta.Kvadrat(new Cetrta.Barva(146, 113, 49), 97),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(59, 20, 4), 66, 65),
+            new Cetrta.Krog(new Cetrta.Barva(116, 17, 22), 45),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(40, 85, 138), 53, 29),
+            new Cetrta.Kvadrat(new Cetrta.Barva(181, 163, 203), 10),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(102, 84, 248), 16, 44),
+            new Cetrta.Kvadrat(new Cetrta.Barva(13, 213, 222), 48),
+            new Cetrta.Krog(new Cetrta.Barva(163, 238, 123), 30),
+            new Cetrta.Kvadrat(new Cetrta.Barva(99, 134, 143), 32),
+            new Cetrta.Krog(new Cetrta.Barva(125, 235, 24), 18),
+            new Cetrta.Krog(new Cetrta.Barva(176, 184, 226), 3),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(207, 56, 93), 26, 85),
+            new Cetrta.Krog(new Cetrta.Barva(206, 61, 107), 70),
+            new Cetrta.Kvadrat(new Cetrta.Barva(81, 157, 208), 81),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(237, 7, 98), 90, 56),
+            new Cetrta.Krog(new Cetrta.Barva(46, 68, 207), 21),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(109, 102, 33), 48, 86),
+            new Cetrta.Kvadrat(new Cetrta.Barva(90, 56, 174), 14),
+            new Cetrta.Krog(new Cetrta.Barva(44, 70, 232), 85),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(133, 57, 81), 33, 82),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(89, 156, 245), 43, 23),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(216, 128, 31), 22, 63),
+            new Cetrta.Krog(new Cetrta.Barva(134, 249, 147), 15),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(43, 75, 45), 9, 50),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(21, 152, 148), 41, 41),
+            new Cetrta.Kvadrat(new Cetrta.Barva(185, 241, 25), 70),
+            new Cetrta.Krog(new Cetrta.Barva(29, 219, 249), 19),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(37, 212, 176), 86, 53),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(42, 81, 125), 78, 54),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(60, 13, 250), 100, 85),
+            new Cetrta.Kvadrat(new Cetrta.Barva(234, 242, 14), 36),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(53, 113, 128), 54, 87),
+            new Cetrta.Krog(new Cetrta.Barva(151, 21, 133), 75),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(80, 26, 151), 72, 35),
+            new Cetrta.Kvadrat(new Cetrta.Barva(12, 249, 109), 73),
+            new Cetrta.Krog(new Cetrta.Barva(81, 182, 50), 58),
+            new Cetrta.Pravokotnik(new Cetrta.Barva(103, 115, 77), 45, 97),
+            new Cetrta.Kvadrat(new Cetrta.Barva(45, 56, 38), 94)
+        ));
+
+        Cetrta.urediNaravno(liki);
+        for (Cetrta.Lik lik: liki) {
+            System.out.println(lik);
+        }
+    }
+}

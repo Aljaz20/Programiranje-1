@@ -1,0 +1,104 @@
+
+public class Test48 {
+
+    public static void main(String[] args) {
+        Tretja.RodovniskiPes[] psi = new Tretja.RodovniskiPes[93];
+        psi[0] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[1] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[2] = new Tretja.RodovniskiPes("abb", psi[1], psi[0]);
+        psi[3] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[4] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[5] = new Tretja.RodovniskiPes("bbb", psi[2], psi[4]);
+        psi[6] = new Tretja.RodovniskiPes("bbb", psi[3], psi[5]);
+        psi[7] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[8] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[9] = new Tretja.RodovniskiPes("bbb", psi[7], psi[8]);
+        psi[10] = new Tretja.RodovniskiPes("bbb", psi[6], psi[9]);
+        psi[11] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[12] = new Tretja.RodovniskiPes("bbb", psi[10], psi[11]);
+        psi[13] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[14] = new Tretja.RodovniskiPes("bbb", psi[13], psi[12]);
+        psi[15] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[16] = new Tretja.RodovniskiPes("abb", psi[15], psi[14]);
+        psi[17] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[18] = new Tretja.RodovniskiPes("bbb", psi[16], psi[17]);
+        psi[19] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[20] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[21] = new Tretja.RodovniskiPes("bbb", psi[19], psi[20]);
+        psi[22] = new Tretja.RodovniskiPes("bbb", psi[21], psi[18]);
+        psi[23] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[24] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[25] = new Tretja.RodovniskiPes("abb", psi[22], psi[24]);
+        psi[26] = new Tretja.RodovniskiPes("bbb", psi[25], psi[23]);
+        psi[27] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[28] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[29] = new Tretja.RodovniskiPes("bbb", psi[26], psi[27]);
+        psi[30] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[31] = new Tretja.RodovniskiPes("bbb", psi[28], psi[29]);
+        psi[32] = new Tretja.RodovniskiPes("bbb", psi[30], psi[31]);
+        psi[33] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[34] = new Tretja.RodovniskiPes("bbb", psi[32], psi[33]);
+        psi[35] = new Tretja.RodovniskiPes("abb", null, null);
+        psi[36] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[37] = new Tretja.RodovniskiPes("bbb", psi[34], psi[35]);
+        psi[38] = new Tretja.RodovniskiPes("bbb", psi[36], psi[37]);
+        psi[39] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[40] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[41] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[42] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[43] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[44] = new Tretja.RodovniskiPes("bbb", psi[38], psi[40]);
+        psi[45] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[46] = new Tretja.RodovniskiPes("bbb", psi[44], psi[42]);
+        psi[47] = new Tretja.RodovniskiPes("bbb", psi[39], psi[45]);
+        psi[48] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[49] = new Tretja.RodovniskiPes("bbb", psi[46], psi[43]);
+        psi[50] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[51] = new Tretja.RodovniskiPes("bbb", psi[48], psi[49]);
+        psi[52] = new Tretja.RodovniskiPes("bbb", psi[50], psi[51]);
+        psi[53] = new Tretja.RodovniskiPes("bbb", psi[41], psi[52]);
+        psi[54] = new Tretja.RodovniskiPes("bbb", psi[47], psi[53]);
+        psi[55] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[56] = new Tretja.RodovniskiPes("bbb", psi[54], psi[55]);
+        psi[57] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[58] = new Tretja.RodovniskiPes("bbb", psi[56], psi[57]);
+        psi[59] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[60] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[61] = new Tretja.RodovniskiPes("bbb", psi[60], psi[59]);
+        psi[62] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[63] = new Tretja.RodovniskiPes("bbb", psi[62], psi[58]);
+        psi[64] = new Tretja.RodovniskiPes("bbb", psi[61], psi[63]);
+        psi[65] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[66] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[67] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[68] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[69] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[70] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[71] = new Tretja.RodovniskiPes("bbb", psi[67], psi[70]);
+        psi[72] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[73] = new Tretja.RodovniskiPes("bbb", psi[65], psi[72]);
+        psi[74] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[75] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[76] = new Tretja.RodovniskiPes("bbb", psi[74], psi[71]);
+        psi[77] = new Tretja.RodovniskiPes("abb", psi[73], psi[68]);
+        psi[78] = new Tretja.RodovniskiPes("bbb", psi[66], psi[77]);
+        psi[79] = new Tretja.RodovniskiPes("bbb", psi[76], psi[78]);
+        psi[80] = new Tretja.RodovniskiPes("bbb", psi[69], psi[79]);
+        psi[81] = new Tretja.RodovniskiPes("bbb", psi[64], psi[80]);
+        psi[82] = new Tretja.RodovniskiPes("bbb", psi[81], psi[75]);
+        psi[83] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[84] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[85] = new Tretja.RodovniskiPes("bbb", psi[82], psi[84]);
+        psi[86] = new Tretja.RodovniskiPes("bbb", psi[83], psi[85]);
+        psi[87] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[88] = new Tretja.RodovniskiPes("bbb", psi[87], psi[86]);
+        psi[89] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[90] = new Tretja.RodovniskiPes("bbb", psi[89], psi[88]);
+        psi[91] = new Tretja.RodovniskiPes("bbb", null, null);
+        psi[92] = new Tretja.RodovniskiPes("abb", psi[91], psi[90]);
+
+        for (int i = 0;  i < psi.length;  i++) {
+            System.out.printf("psi[%d] -> %b%n", i, psi[i].preveri());
+        }
+    }
+}

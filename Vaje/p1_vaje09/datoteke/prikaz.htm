@@ -1,0 +1,801 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Prikaz rezultatov testiranja</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+            .tableBase { border-collapse: collapse; }
+            .tableBase > tbody > tr > td { border: 1px solid black; padding: 7px;}
+            .tableResults { table-layout: fixed; border-spacing: 0px; border-collapse: separate; }
+            table#nasredini { margin-left:auto; margin-right:auto; }
+            table tbody td.hoverOk {background-color:#9F9; border: 1px solid #63B563; width: 15px; color: black; text-align: center; }
+            .hoverOk:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #63B563; }
+            .hoverOk:hover td { background: transparent; }
+            .hoverOk > a:link, .hoverOk > a:visited, .hoverOk > a:hover, .hoverOk > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverErr {background-color:#FFBF00; border: 1px solid #CB9800; width: 15px; color: black; text-align: center; }
+            .hoverErr:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #CB9800; }
+            .hoverErr:hover td { background: transparent; }
+            .hoverErr > a:link, .hoverErr > a:visited, .hoverErr > a:hover, .hoverErr > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverRuntime {background-color:#FF9; border: 1px solid #D8D87E; width: 15px; color: black; text-align: center; }
+            .hoverRuntime:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #D8D87E; }
+            .hoverRuntime:hover td { background: transparent; }
+            .hoverRuntime > a:link, .hoverRuntime > a:visited, .hoverRuntime > a:hover, .hoverRuntime > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverCompile {background-color:#C00000; border: 1px solid #710B0B; width: 15px; color: black; text-align: center; }
+            .hoverCompile:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #710B0B; }
+            .hoverCompile:hover td { background: transparent; }
+            .hoverCompile > a:link, .hoverCompile > a:visited, .hoverCompile > a:hover, .hoverCompile > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverMissing {background-color:#F0F0F0; border: 1px solid #ABABAB; width: 15px; color: black; text-align: center; }
+            .hoverMissing:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #ABABAB; }
+            .hoverMissing:hover td { background: transparent; }
+            .hoverMissing > a:link, .hoverMissing > a:visited, .hoverMissing > a:hover, .hoverMissing > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverTimeout {background-color:#B9F; border: 1px solid #9070CE; width: 15px; color: black; text-align: center; }
+            .hoverTimeout:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #9070CE; }
+            .hoverTimeout:hover td { background: transparent; }
+            .hoverTimeout > a:link, .hoverTimeout > a:visited, .hoverTimeout > a:hover, .hoverTimeout > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverImage {background-color:#D0E0F0; border: 1px solid #a6b3c0; width: 15px; color: black; text-align: center; }
+            .hoverImage:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #a6b3c0; }
+            .hoverImage:hover td { background: transparent; }
+            .hoverImage > a:link, .hoverImage > a:visited, .hoverImage > a:hover, .hoverImage > a:active { color: black; font-size: 0.9em; }
+            .tableCommon { border-collapse: collapse; }
+            .tableOK > tbody > tr > td { border: 1px solid #63B563; padding: 7px;}
+            .tableError > tbody > tr > td { border: 1px solid #CB9800; padding: 7px;}
+            .tableRuntime > tbody > tr > td { border: 1px solid #D8D87E; padding: 7px;}
+            .tableCompiler > tbody > tr > td { border: 1px solid #710B0B; padding: 7px;}
+            .tableMissing > tbody > tr > td { border: 1px solid #ABABAB; padding: 7px;}
+            .tableTimeout > tbody > tr > td { border: 1px solid #9070CE; padding: 7px;}
+            .tableImage > tbody > tr > td { border: 1px solid #a6b3c0; padding: 7px;}
+            .tableSummary { table-layout: fixed; }
+            .texttt { font-family: DejaVu Sans Mono, monospace; font-size: 0.8em; }
+            table.diff > tbody > tr > td { border: none; font-family: DejaVu Sans Mono, monospace}
+            .diff_add { color: green; font-family: DejaVu Sans Mono, monospace; }
+            .diff_sub { color: blue; font-family: DejaVu Sans Mono, monospace; }
+            .diff_chg { color: red; font-family: DejaVu Sans Mono, monospace; }
+            a { color: blue; text-decoration: none; height: 100%; width: 100%; vertical-align: middle; }
+            a:link { color: blue; text-decoration: none; }
+            a:link { color: blue; text-decoration: none; }
+            a:hover { color: blue; text-decoration: underline; }
+            body, td { font: normal normal 100%/1.0 DejaVu Sans, sans-serif; }
+            h1 { font-weight: bold; font-size: 150%; }
+            h2 { font-weight: normal; font-size: 125%; border-top: 1px solid black; border-bottom: 1px solid black; background: #DEF; padding: 5px; margin-top: 36px; margin-bottom: 36px}
+            .container{ margin: 0px auto; width: 70%; min-width: 700px; margin-top: 1.8cm; margin-bottom: 1.8cm; }
+            .rwordb{ color: blue; font-weight: bold; }
+            .rwordv{ color:#8000ff; font-weight: bold; }
+            .vcomment{ color: green; }
+            .bcomment{ color: green; }
+            .niz{ color:#a31515; }
+            .stevilo{ color:#ff8000; }
+            tab { padding-left: 4em; }
+            #grad1 {
+                background: -webkit-linear-gradient(left, #E0E0E0 , white);
+                background: -o-linear-gradient(right, #E0E0E0, white);
+                background: -moz-linear-gradient(right, #E0E0E0, white);
+                background: linear-gradient(to right, #E0E0E0 , white);
+            }
+            #grad2 {
+                background: -webkit-linear-gradient(left, #9F9 , white);
+                background: -o-linear-gradient(right, #9F9, white);
+                background: -moz-linear-gradient(right, #9F9, white);
+                background: linear-gradient(to right, #9F9 , white);
+            }
+            .capSlika { display:block; height: 25px; margin:0 auto; font-size: 1.0em; text-align: left; }
+            .dborder { padding: 0px; border: 1px solid #CACACA; }
+            .capText { display: block; margin:0 auto; font-size: 0.9em; text-align: left; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <a name="top"></a>
+        <h1 id="grad2" style="padding: 10px; border: 0px solid black; color: #000000;">Rezultati preverjanja metod programa (10/10)</h1>
+        <div style="height: 20px"></div>
+        <a name="summary"></a>
+        <h2>Povzetek rezultatov</h2>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase1">1</a></td>
+                <td class="hoverOk"><a href="#testcase2">2</a></td>
+                <td class="hoverOk"><a href="#testcase3">3</a></td>
+                <td class="hoverOk"><a href="#testcase4">4</a></td>
+                <td class="hoverOk"><a href="#testcase5">5</a></td>
+                <td class="hoverOk"><a href="#testcase6">6</a></td>
+                <td class="hoverOk"><a href="#testcase7">7</a></td>
+                <td class="hoverOk"><a href="#testcase8">8</a></td>
+                <td class="hoverOk"><a href="#testcase9">9</a></td>
+                <td class="hoverOk"><a href="#testcase10">10</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <div style="height: 20px"></div>
+        <h2>Rezultati</h2>
+        <a name="testcase1"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test01 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Datoteka dopis = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>);<br/>
+<tab><tab>Datoteka porocilo = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>);<br/>
+<tab><tab>Datoteka seminarska = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>);<br/>
+<br/>
+<tab><tab>System.out.println(dopis.toString());<br/>
+<tab><tab>System.out.println(porocilo.toString());<br/>
+<tab><tab>System.out.println(seminarska.toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            dopis.txt&nbsp;[b&nbsp;500]<br/>porocilo.txt&nbsp;[b&nbsp;30000]<br/>seminarska.tex&nbsp;[b&nbsp;3500]<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase2"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 2</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test02 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Datoteka dopis = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>);<br/>
+<tab><tab>Datoteka porocilo = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>);<br/>
+<tab><tab>Datoteka seminarska = <span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>);<br/>
+<br/>
+<tab><tab>System.out.println(dopis.velikost());<br/>
+<tab><tab>System.out.println(porocilo.velikost());<br/>
+<tab><tab>System.out.println(seminarska.velikost());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            500<br/>30000<br/>3500<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase3"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test03 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Datoteka diagram = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>);<br/>
+<tab><tab>Datoteka triglav = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>);<br/>
+<tab><tab>Datoteka ikona = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>);<br/>
+<br/>
+<tab><tab>System.out.println(diagram.toString());<br/>
+<tab><tab>System.out.println(triglav.toString());<br/>
+<tab><tab>System.out.println(ikona.toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            diagram.bmp&nbsp;[s&nbsp;1200&nbsp;x&nbsp;900]<br/>triglav.bmp&nbsp;[s&nbsp;3000&nbsp;x&nbsp;2000]<br/>icon.bmp&nbsp;[s&nbsp;16&nbsp;x&nbsp;16]<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase4"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 4</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test04 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Datoteka diagram = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>);<br/>
+<tab><tab>Datoteka triglav = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>);<br/>
+<tab><tab>Datoteka ikona = <span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>);<br/>
+<br/>
+<tab><tab>System.out.println(diagram.velikost());<br/>
+<tab><tab>System.out.println(triglav.velikost());<br/>
+<tab><tab>System.out.println(ikona.velikost());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            3240054<br/>18000054<br/>822<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase5"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 5</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test05 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik etc = <span class="rwordb">new</span> Imenik(<span class="niz">"etc"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"settings"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik faks = <span class="rwordb">new</span> Imenik(<span class="niz">"faks"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dn.tex"</span>, <span class="stevilo">700</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik zasebno = <span class="rwordb">new</span> Imenik(<span class="niz">"zasebno"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"gozd.bmp"</span>, <span class="stevilo">700</span>, <span class="stevilo">1200</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"jaz.bmp"</span>, <span class="stevilo">1500</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"morje.bmp"</span>, <span class="stevilo">900</span>, <span class="stevilo">750</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"roman.txt"</span>, <span class="stevilo">10000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"stariCasi"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"pisemce.txt"</span>, <span class="stevilo">300</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"sosolci.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1500</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"zabava.bmp"</span>, <span class="stevilo">1300</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"vsebina.txt"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik ana = <span class="rwordb">new</span> Imenik(<span class="niz">"ana"</span>, <span class="rwordb">new</span> Datoteka[]{faks, zasebno});<br/>
+<br/>
+<tab><tab>Imenik sluzba = <span class="rwordb">new</span> Imenik(<span class="niz">"sluzba"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"nacrt.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik bojan = <span class="rwordb">new</span> Imenik(<span class="niz">"bojan"</span>, <span class="rwordb">new</span> Datoteka[]{sluzba});<br/>
+<br/>
+<tab><tab>Imenik home = <span class="rwordb">new</span> Imenik(<span class="niz">"home"</span>, <span class="rwordb">new</span> Datoteka[]{ana, bojan});<br/>
+<br/>
+<tab><tab>Imenik koren = <span class="rwordb">new</span> Imenik(<span class="niz">"koren"</span>, <span class="rwordb">new</span> Datoteka[]{etc, home});<br/>
+<br/>
+<tab><tab>System.out.println(faks.toString());<br/>
+<tab><tab>System.out.println(zasebno.toString());<br/>
+<tab><tab>System.out.println(sluzba.toString());<br/>
+<tab><tab>System.out.println(ana.toString());<br/>
+<tab><tab>System.out.println(bojan.toString());<br/>
+<tab><tab>System.out.println(home.toString());<br/>
+<tab><tab>System.out.println(etc.toString());<br/>
+<tab><tab>System.out.println(koren.toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            faks&nbsp;[i&nbsp;3]<br/>zasebno&nbsp;[i&nbsp;7]<br/>sluzba&nbsp;[i&nbsp;3]<br/>ana&nbsp;[i&nbsp;2]<br/>bojan&nbsp;[i&nbsp;1]<br/>home&nbsp;[i&nbsp;2]<br/>etc&nbsp;[i&nbsp;2]<br/>koren&nbsp;[i&nbsp;2]<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase6"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 6</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test06 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik etc = <span class="rwordb">new</span> Imenik(<span class="niz">"etc"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"settings"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik faks = <span class="rwordb">new</span> Imenik(<span class="niz">"faks"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dn.tex"</span>, <span class="stevilo">700</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik zasebno = <span class="rwordb">new</span> Imenik(<span class="niz">"zasebno"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"gozd.bmp"</span>, <span class="stevilo">700</span>, <span class="stevilo">1200</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"jaz.bmp"</span>, <span class="stevilo">1500</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"morje.bmp"</span>, <span class="stevilo">900</span>, <span class="stevilo">750</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"roman.txt"</span>, <span class="stevilo">10000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"stariCasi"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"pisemce.txt"</span>, <span class="stevilo">300</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"sosolci.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1500</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"zabava.bmp"</span>, <span class="stevilo">1300</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"vsebina.txt"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik ana = <span class="rwordb">new</span> Imenik(<span class="niz">"ana"</span>, <span class="rwordb">new</span> Datoteka[]{faks, zasebno});<br/>
+<br/>
+<tab><tab>Imenik sluzba = <span class="rwordb">new</span> Imenik(<span class="niz">"sluzba"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"nacrt.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik bojan = <span class="rwordb">new</span> Imenik(<span class="niz">"bojan"</span>, <span class="rwordb">new</span> Datoteka[]{sluzba});<br/>
+<br/>
+<tab><tab>Imenik home = <span class="rwordb">new</span> Imenik(<span class="niz">"home"</span>, <span class="rwordb">new</span> Datoteka[]{ana, bojan});<br/>
+<br/>
+<tab><tab>Imenik koren = <span class="rwordb">new</span> Imenik(<span class="niz">"koren"</span>, <span class="rwordb">new</span> Datoteka[]{etc, home});<br/>
+<br/>
+<tab><tab>System.out.println(faks.velikost());<br/>
+<tab><tab>System.out.println(zasebno.velikost());<br/>
+<tab><tab>System.out.println(sluzba.velikost());<br/>
+<tab><tab>System.out.println(ana.velikost());<br/>
+<tab><tab>System.out.println(bojan.velikost());<br/>
+<tab><tab>System.out.println(home.velikost());<br/>
+<tab><tab>System.out.println(etc.velikost());<br/>
+<tab><tab>System.out.println(koren.velikost());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            3244510<br/>39956336<br/>6030810<br/>43201102<br/>6031066<br/>49232424<br/>1278<br/>49233958<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase7"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 7</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test07 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik a = <span class="rwordb">new</span> Imenik(<span class="niz">"a"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"b"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"c"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"d"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"e"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"f"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"g"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"g.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"f.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"e.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"d.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"c.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"b.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"a.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>System.out.println(a.velikost());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            2492<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase8"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 8</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test08 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik etc = <span class="rwordb">new</span> Imenik(<span class="niz">"etc"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"settings"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik faks = <span class="rwordb">new</span> Imenik(<span class="niz">"faks"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dn.tex"</span>, <span class="stevilo">700</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik zasebno = <span class="rwordb">new</span> Imenik(<span class="niz">"zasebno"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"gozd.bmp"</span>, <span class="stevilo">700</span>, <span class="stevilo">1200</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"jaz.bmp"</span>, <span class="stevilo">1500</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"morje.bmp"</span>, <span class="stevilo">900</span>, <span class="stevilo">750</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"roman.txt"</span>, <span class="stevilo">10000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"stariCasi"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"pisemce.txt"</span>, <span class="stevilo">300</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"sosolci.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1500</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"zabava.bmp"</span>, <span class="stevilo">1300</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"vsebina.txt"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik ana = <span class="rwordb">new</span> Imenik(<span class="niz">"ana"</span>, <span class="rwordb">new</span> Datoteka[]{faks, zasebno});<br/>
+<br/>
+<tab><tab>Imenik sluzba = <span class="rwordb">new</span> Imenik(<span class="niz">"sluzba"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"nacrt.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik bojan = <span class="rwordb">new</span> Imenik(<span class="niz">"bojan"</span>, <span class="rwordb">new</span> Datoteka[]{sluzba});<br/>
+<br/>
+<tab><tab>Imenik home = <span class="rwordb">new</span> Imenik(<span class="niz">"home"</span>, <span class="rwordb">new</span> Datoteka[]{ana, bojan});<br/>
+<br/>
+<tab><tab>Imenik koren = <span class="rwordb">new</span> Imenik(<span class="niz">"koren"</span>, <span class="rwordb">new</span> Datoteka[]{etc, home});<br/>
+<br/>
+<tab><tab>System.out.println(zasebno.steviloVecjihSlik(<span class="stevilo">5000</span>));<br/>
+<tab><tab>System.out.println(zasebno.steviloVecjihSlik(<span class="stevilo">3000</span>));<br/>
+<tab><tab>System.out.println(zasebno.steviloVecjihSlik(<span class="stevilo">2000</span>));<br/>
+<tab><tab>System.out.println(zasebno.steviloVecjihSlik(<span class="stevilo">1000</span>));<br/>
+<tab><tab>System.out.println(zasebno.steviloVecjihSlik(<span class="stevilo">500</span>));<br/>
+<tab><tab>System.out.println(ana.steviloVecjihSlik(<span class="stevilo">500</span>));<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            0<br/>0<br/>1<br/>2<br/>4<br/>0<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase9"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 9</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test09 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik etc = <span class="rwordb">new</span> Imenik(<span class="niz">"etc"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"icon.bmp"</span>, <span class="stevilo">16</span>, <span class="stevilo">16</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"settings"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik faks = <span class="rwordb">new</span> Imenik(<span class="niz">"faks"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"diagram.bmp"</span>, <span class="stevilo">1200</span>, <span class="stevilo">900</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dn.tex"</span>, <span class="stevilo">700</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"seminarska.tex"</span>, <span class="stevilo">3500</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik zasebno = <span class="rwordb">new</span> Imenik(<span class="niz">"zasebno"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"gozd.bmp"</span>, <span class="stevilo">700</span>, <span class="stevilo">1200</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"jaz.bmp"</span>, <span class="stevilo">1500</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"morje.bmp"</span>, <span class="stevilo">900</span>, <span class="stevilo">750</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"roman.txt"</span>, <span class="stevilo">10000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"stariCasi"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"pisemce.txt"</span>, <span class="stevilo">300</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"sosolci.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1500</span>),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"zabava.bmp"</span>, <span class="stevilo">1300</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"triglav.bmp"</span>, <span class="stevilo">3000</span>, <span class="stevilo">2000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"vsebina.txt"</span>, <span class="stevilo">200</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik ana = <span class="rwordb">new</span> Imenik(<span class="niz">"ana"</span>, <span class="rwordb">new</span> Datoteka[]{faks, zasebno});<br/>
+<br/>
+<tab><tab>Imenik sluzba = <span class="rwordb">new</span> Imenik(<span class="niz">"sluzba"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"dopis.txt"</span>, <span class="stevilo">500</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> SlikovnaDatoteka(<span class="niz">"nacrt.bmp"</span>, <span class="stevilo">2000</span>, <span class="stevilo">1000</span>),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"porocilo.txt"</span>, <span class="stevilo">30000</span>),<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab>Imenik bojan = <span class="rwordb">new</span> Imenik(<span class="niz">"bojan"</span>, <span class="rwordb">new</span> Datoteka[]{sluzba});<br/>
+<br/>
+<tab><tab>Imenik home = <span class="rwordb">new</span> Imenik(<span class="niz">"home"</span>, <span class="rwordb">new</span> Datoteka[]{ana, bojan});<br/>
+<br/>
+<tab><tab>Imenik koren = <span class="rwordb">new</span> Imenik(<span class="niz">"koren"</span>, <span class="rwordb">new</span> Datoteka[]{etc, home});<br/>
+<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"icon.bmp"</span>));<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"sosolci.bmp"</span>));<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"porocilo.txt"</span>));<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"roman.txt"</span>));<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"etc"</span>));<br/>
+<tab><tab>System.out.println(koren.poisci(<span class="niz">"sluzba"</span>));<br/>
+<tab><tab>System.out.println(<span class="niz">"----------"</span>);<br/>
+<br/>
+<tab><tab>System.out.println(ana.poisci(<span class="niz">"zabava.bmp"</span>));<br/>
+<tab><tab>System.out.println(ana.poisci(<span class="niz">"etc"</span>));<br/>
+<tab><tab>System.out.println(<span class="niz">"----------"</span>);<br/>
+<br/>
+<tab><tab>System.out.println(zasebno.poisci(<span class="niz">"vsebina.txt"</span>));<br/>
+<tab><tab>System.out.println(zasebno.poisci(<span class="niz">"pisemce.txt"</span>));<br/>
+<tab><tab>System.out.println(zasebno.poisci(<span class="niz">"ana"</span>));<br/>
+<tab><tab>System.out.println(<span class="niz">"----------"</span>);<br/>
+<br/>
+<tab><tab>System.out.println(bojan.poisci(<span class="niz">"pisemce.txt"</span>));<br/>
+<tab><tab>System.out.println(bojan.poisci(<span class="niz">"porocilo.txt"</span>));<br/>
+<tab><tab>System.out.println(<span class="niz">"----------"</span>);<br/>
+<br/>
+<tab><tab>System.out.println(sluzba.poisci(<span class="niz">"porocilo.txt"</span>));<br/>
+<tab><tab>System.out.println(sluzba.poisci(<span class="niz">"koren"</span>));<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            ./etc/icon.bmp<br/>./home/ana/zasebno/stariCasi/sosolci.bmp<br/>./home/bojan/sluzba/porocilo.txt<br/>./home/ana/zasebno/roman.txt<br/>./etc<br/>./home/bojan/sluzba<br/>----------<br/>./zasebno/stariCasi/zabava.bmp<br/>null<br/>----------<br/>./vsebina.txt<br/>./stariCasi/pisemce.txt<br/>null<br/>----------<br/>null<br/>./sluzba/porocilo.txt<br/>----------<br/>./porocilo.txt<br/>null<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase10"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 10</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test10 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<br/>
+<tab><tab>Imenik a = <span class="rwordb">new</span> Imenik(<span class="niz">"a"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"b"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"c"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"d"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"e"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"f"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> Imenik(<span class="niz">"g"</span>, <span class="rwordb">new</span> Datoteka[]{<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"g.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"f.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"e.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"d.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"c.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab><tab>}),<br/>
+<tab><tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"b.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab><tab>}),<br/>
+<tab><tab><tab><span class="rwordb">new</span> BesedilnaDatoteka(<span class="niz">"a.txt"</span>, <span class="stevilo">100</span>)<br/>
+<tab><tab>});<br/>
+<br/>
+<tab><tab><span class="rwordb">for</span> (<span class="rwordv">char</span> c = <span class="niz">'a';  c <= 'g'</span>;  c++) {<br/>
+<tab><tab><tab>System.out.println(a.poisci(String.format(<span class="niz">"%c"</span>, c)));<br/>
+<tab><tab><tab>System.out.println(a.poisci(String.format(<span class="niz">"%c.txt"</span>, c)));<br/>
+<tab><tab>}<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            null<br/>./a.txt<br/>./b<br/>./b/b.txt<br/>./b/c<br/>./b/c/c.txt<br/>./b/c/d<br/>./b/c/d/d.txt<br/>./b/c/d/e<br/>./b/c/d/e/e.txt<br/>./b/c/d/e/f<br/>./b/c/d/e/f/f.txt<br/>./b/c/d/e/f/g<br/>./b/c/d/e/f/g/g.txt<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+
+        <div style="height: 30px"></div>
+
+        <table id="grad1" class="tableLegend tableSummary"
+          <tbody>
+            <tr>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #9F9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">ok</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FFBF00; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FF9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka med izvajanjem</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #C00000; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">se ne prevede</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #B9F; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">timeout (1000 ms)</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #D0E0F0; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">rezultat izrisa</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a name="bottom"></a>
+        </div>
+    </body>
+    <!-- java class tester version "1.5.12" -->
+    <!-- 7.12.2022 11:52.23 -->
+    <!-- LAPTOP-MSNHRT5T, fe80::e156:35a7:c421:e314%11 -->
+</html>

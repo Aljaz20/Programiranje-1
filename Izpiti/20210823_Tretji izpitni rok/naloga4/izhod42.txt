@@ -1,0 +1,16 @@
+(1, aaa): 2
+(1, baaaa): 1
+(2, aaa): 7
+(2, baaaa): 3
+(3, aaa): 4
+(3, baaaa): 7
+(4, aaa): 4
+(4, baaaa): 8
+(5, aaa): 6
+(5, baaaa): 5
+(6, aaa): 3
+(6, baaaa): 4
+(7, aaa): 7
+(7, baaaa): 8
+(8, aaa): 5
+(8, baaaa): 9

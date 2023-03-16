@@ -1,0 +1,1 @@
+[ab, abbaa, ba, baaba, babb, bbb]
